@@ -1,6 +1,6 @@
 # Inception
 
-(http://www.ishafoundation.org/us/blog/wp-content/uploads/2013/02/inception-totem.jpg)
+![Inception](http://www.ishafoundation.org/us/blog/wp-content/uploads/2013/02/inception-totem.jpg)
 
 ## About
 The world's worst CF app and also a pretty good movie.
