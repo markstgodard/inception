@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -20,5 +21,9 @@ func inception(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, err.Error(), http.StatusInternalServerError)
 	}
 	defer resp.Body.Close()
-	fmt.Fprintln(res, "good luck")
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		http.Error(res, err.Error(), http.StatusInternalServerError)
+	}
+	fmt.Fprintln(res, body)
 }
