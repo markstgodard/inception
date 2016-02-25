@@ -20,10 +20,14 @@ func inception(res http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		http.Error(res, err.Error(), http.StatusInternalServerError)
 	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		http.Error(res, err.Error(), http.StatusInternalServerError)
+	if resp != nil {
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			http.Error(res, err.Error(), http.StatusInternalServerError)
+		}
+		fmt.Fprintln(res, body)
+	} else {
+		fmt.Fprintln(res, "No response?")
 	}
-	fmt.Fprintln(res, body)
 }
